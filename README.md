@@ -1,1 +1,0 @@
-# Competative_prog
