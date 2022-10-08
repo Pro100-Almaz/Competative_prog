@@ -20,7 +20,7 @@
                 </a>
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                     <li>
-                        <a href="#" class="nav-link px-2 text-white">Main page</a>
+                        <a href="{% url 'main' %}" class="nav-link px-2 text-white">Main page</a>
                     </li>
                     <li>
                         <a href="#" class="nav-link px-2 text-white">My profile</a>
@@ -36,41 +36,25 @@
                     <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Username" aria-label="Username">
                 </form>
                 <div class="text-end">
-<!--                    <a href="{% url 'add_account' %}"><button class="btn btn-outline-light me-2" type="button">Add account</button></a>-->
                     <button class="btn btn-outline-light me-2" type="button"><a href="{% url 'add_account' %}">Add account</a></button>
-                    <button class="btn btn-warning" type="button">Sign in/up</button>
                 </div>
             </div>
         </div>
     </header>
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!------ Include the above in your HEAD tag ---------->
 
-    <div class="wrapper fadeInDown">
-      <div id="formContent">
-        <!-- Tabs Titles -->
 
-        <!-- Icon -->
+
+    <div class="center fadeInDown">
+      <div id="formContent" >
+
         <div class="fadeIn first">
           <div class="my-5 flex justify-center">
               <img src="{% static 'images/user_icon.png' %}" id="icon"  alt="User Icon"/>
           </div>
         </div>
 
-        <!-- Login Form -->
-
-<!--        <form method="post" class="">-->
-<!--          <input type="text" id="login" class="fadeIn second" name="login" value="{{ data.name }}" placeholder="Leetcode Username">-->
-<!--          <input type="text" id="password" class="fadeIn third" name="login" value="{{ data.email }}" placeholder="Mail for confirmation">-->
-<!--          <input type="submit" class="fadeIn fourth" value="Add account">-->
-<!--        </form>-->
         <form method="post">
             {% csrf_token %}
-<!--            <textarea class="fadeIn second" name="description" placeholder="Leetcode Username" value="{{ data.name.error }}"></textarea>-->
-<!--            <br>-->
-<!--            <textarea class="fadeIn third" name="description" placeholder="Mail for confirmation" value="{{ data.email.error }}"></textarea>-->
             <input type="text" id="login" class="fadeIn second" name="login" placeholder="Leetcode Username">
             <input type="text" id="email" class="fadeIn third" name="email" placeholder="Mail for confirmation">
             <input type="submit" class="fadeIn fourth" value="Add account">

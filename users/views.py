@@ -7,11 +7,6 @@ from django.db.models import Q
 import requests
 from datetime import datetime, timedelta
 import pytz
-from django.core.files import File
-import os
-from urllib.parse import urljoin, urlparse
-from tqdm import tqdm
-from bs4 import BeautifulSoup as bs
 import json
 
 
@@ -46,8 +41,6 @@ def main_list(request):
     return render(request, 'main_page.html', context)
 
 def get_image(username):
-    import requests
-
     cookies = {
         '__stripe_mid': '7b95eb48-7e92-492c-bc68-f080d4700cdc527ad7',
         'csrftoken': '9LNO9dIUeEQy2OlTzzdCjWiE7hAbV5l7lZMuJbHu5zjcF8ljvAdVlbrqrd4ZfKPj',
@@ -58,10 +51,6 @@ def get_image(username):
         'authority': 'leetcode.com',
         'accept': '*/*',
         'accept-language': 'ru,en;q=0.9,en-GB;q=0.8,en-US;q=0.7,es;q=0.6',
-        # Already added when you pass json=
-        # 'content-type': 'application/json',
-        # Requests sorts cookies= alphabetically
-        # 'cookie': '__stripe_mid=7b95eb48-7e92-492c-bc68-f080d4700cdc527ad7; csrftoken=9LNO9dIUeEQy2OlTzzdCjWiE7hAbV5l7lZMuJbHu5zjcF8ljvAdVlbrqrd4ZfKPj; LEETCODE_SESSION=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfYXV0aF91c2VyX2lkIjoiMzk0MDA0MiIsIl9hdXRoX3VzZXJfYmFja2VuZCI6ImFsbGF1dGguYWNjb3VudC5hdXRoX2JhY2tlbmRzLkF1dGhlbnRpY2F0aW9uQmFja2VuZCIsIl9hdXRoX3VzZXJfaGFzaCI6IjFiZWFiMzc0ZDE0NmNjMDgxYzljNWY2ODFjMjljNjkxYTRkYWE4YzIiLCJpZCI6Mzk0MDA0MiwiZW1haWwiOiJlbGFtaXJrYWRAZ21haWwuY29tIiwidXNlcm5hbWUiOiJlbGFtaXJrYWQiLCJ1c2VyX3NsdWciOiJlbGFtaXJrYWQiLCJhdmF0YXIiOiJodHRwczovL2Fzc2V0cy5sZWV0Y29kZS5jb20vdXNlcnMvYXZhdGFycy9hdmF0YXJfMTY2MDE0NDExMC5wbmciLCJyZWZyZXNoZWRfYXQiOjE2NjA1ODM2NzcsImlwIjoiMTg1LjQ4LjE0OC4xODgiLCJpZGVudGl0eSI6IjRjYTQyZjc4ZmRhNDM3NTgyZTc3YjlmOWE0NWMzMzc2Iiwic2Vzc2lvbl9pZCI6MjU2ODY4OTh9.nEXCBrK0EImkWB4UsuOJZJAaCWJtEQva-eAAybw0eUk',
         'origin': 'https://leetcode.com',
         'referer': 'https://leetcode.com/sulrz/',
         'sec-ch-ua': '"Chromium";v="104", " Not A;Brand";v="99", "Microsoft Edge";v="104"',
